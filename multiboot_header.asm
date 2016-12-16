@@ -1,5 +1,5 @@
 ; Note: Using intel x86 assembly
-; Header will be written to a section named .[FILE]
+; Header will be written to a section named .multiboot_header
 section .multiboot_header
 
 ; label(s) that mark a memory location.
@@ -14,7 +14,7 @@ header_start:
 
   ; checksum
   ; A simple hack to avoid a compiler warning
-  dd0x100000000 - (0xe85250d6 + 0 + (header_end - header_start))
+  dd 0x100000000 - (0xe85250d6 + 0 + (header_end - header_start))
 
   ; Optional multiboot tags here
 
